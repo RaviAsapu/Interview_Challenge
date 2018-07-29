@@ -14,6 +14,6 @@ var db = {
 };
 
 // Insert models below
-db.Employee = db.sequelize.import('../api/employee/employee.model');
+db.Employee = db.sequelize.import('../apicrud/employee/employee.model');
 
 module.exports = db;

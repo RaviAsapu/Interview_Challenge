@@ -5,43 +5,93 @@
   </h1>
 </div>
 
-<h2>Employees : </h2>
 
-<div>
-  <input type="text" placeholder="Enter Name" [(ngModel)]="emp.name"/>
-  <input type="text" placeholder="Enter Email" [(ngModel)]="emp.email"/>
-  <input type="text" placeholder="Enter Role" [(ngModel)]="emp.role"/>
-  <button (click)="addEmployee(emp)">Add Employee</button>
+div class="container">
+  <h3>Add new employee : </h3>
+  <form name="userForm">
+    <div class="form-group row">
+      <div class="col-xs-3">
+        <label for="uname">Name</label>
+        <input class="form-control" id="empid" name="empname" type="text" placeholder="Enter Name" [(ngModel)]="emp.name" #uname="ngModel"
+          required/>
+        <div *ngIf="uname.invalid && (uname.dirty || uname.touched)" class="alert alert-danger">
+          <span class="error" *ngIf="uname.errors.required">
+            Required!</span>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <label for="email">Email</label>
+        <input class="form-control" id="email" name="email" type="email" placeholder="Enter Email" [(ngModel)]="user.email" #email="ngModel"
+          email required/>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+          <span class="error" *ngIf="email.errors.required">
+            Required!</span>
+          <span class="error" *ngIf="email.errors.email">
+            Not valid email!</span>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <label for="password">Password</label>
+        <input class="form-control" id="password" name="password" type="password" placeholder="Enter Password" [(ngModel)]="user.password"
+          #password="ngModel" required />
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+          <span class="error" *ngIf="password.errors.required">
+            Required!</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-primary btn-sm" (click)="addUser(user)">Add User</button>
+    </div>
+  </form>
 </div>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Role</th>
-      <th>Action</th>
-    </tr>
-  </thead>
+<div>
+  <h3>Users : </h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>User Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Created Date</th>
+        <th>Updated Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
 
-  <tbody *ngIf="employees">
-    <tr *ngFor="let emp of employees; let i = index">
-      <td>
-        {{emp.id}}
-      </td>
-      <td>
-        {{emp.name}}
-      </td>
-      <td>
-        {{emp.email}}
-      </td>
-      <td>
-        {{emp.role}}
-      </td>
-      <td>
-        <button class="btn btn-danger btn-sm" (click)="deleteEmployee(emp, emp.id)">Delete</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    <tbody *ngIf="users">
+      <tr *ngFor="let user of users; let i = index">
+        <td>
+          {{user.id}}
+        </td>
+        <td>
+          {{user.name}}
+        </td>
+        <td>
+          {{user.email}}
+        </td>
+        <td>
+          {{user.role}}
+        </td>
+        <td>
+          {{user.createdAt | date: 'medium'}}
+        </td>
+        <td>
+          {{user.updatedAt | date: 'medium'}}
+        </td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="deleteUser(user.id)">
+            <span>Delete</span>
+          </button>
+          <button class="btn btn-primary btn-sm" (click)="open(content, user)">
+            <span>Edit</span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
