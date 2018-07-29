@@ -1,0 +1,47 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+
+<h2>Employees : </h2>
+
+<div>
+  <input type="text" placeholder="Enter Name" [(ngModel)]="emp.name"/>
+  <input type="text" placeholder="Enter Email" [(ngModel)]="emp.email"/>
+  <input type="text" placeholder="Enter Role" [(ngModel)]="emp.role"/>
+  <button (click)="addEmployee(emp)">Add Employee</button>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody *ngIf="employees">
+    <tr *ngFor="let emp of employees; let i = index">
+      <td>
+        {{emp.id}}
+      </td>
+      <td>
+        {{emp.name}}
+      </td>
+      <td>
+        {{emp.email}}
+      </td>
+      <td>
+        {{emp.role}}
+      </td>
+      <td>
+        <button class="btn btn-danger btn-sm" (click)="deleteEmployee(emp, emp.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
