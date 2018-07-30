@@ -21,7 +21,7 @@ div class="container">
       </div>
       <div class="col-xs-3">
         <label for="email">Email</label>
-        <input class="form-control" id="email" name="email" type="email" placeholder="Enter Email" [(ngModel)]="user.email" #email="ngModel"
+        <input class="form-control" id="email" name="email" type="email" placeholder="Enter Email" [(ngModel)]="emp.email" #email="ngModel"
           email required/>
         <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
           <span class="error" *ngIf="email.errors.required">
@@ -32,7 +32,7 @@ div class="container">
       </div>
       <div class="col-xs-3">
         <label for="password">Password</label>
-        <input class="form-control" id="password" name="password" type="password" placeholder="Enter Password" [(ngModel)]="user.password"
+        <input class="form-control" id="password" name="password" type="password" placeholder="Enter Password" [(ngModel)]="emp.password"
           #password="ngModel" required />
         <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
           <span class="error" *ngIf="password.errors.required">
@@ -41,17 +41,17 @@ div class="container">
       </div>
     </div>
     <div>
-      <button class="btn btn-primary btn-sm" (click)="addUser(user)">Add User</button>
+      <button class="btn btn-primary btn-sm" (click)="addEmployee(emp)">Add Employee</button>
     </div>
   </form>
 </div>
 
 <div>
-  <h3>Users : </h3>
+  <h3>Employees : </h3>
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>User Id</th>
+        <th>Emp Id</th>
         <th>Name</th>
         <th>Email</th>
         <th>Role</th>
@@ -61,31 +61,31 @@ div class="container">
       </tr>
     </thead>
 
-    <tbody *ngIf="users">
-      <tr *ngFor="let user of users; let i = index">
+    <tbody *ngIf="employees">
+      <tr *ngFor="let emp of employees; let i = index">
         <td>
-          {{user.id}}
+          {{emp.id}}
         </td>
         <td>
-          {{user.name}}
+          {{emp.name}}
         </td>
         <td>
-          {{user.email}}
+          {{emp.email}}
         </td>
         <td>
-          {{user.role}}
+          {{emp.role}}
         </td>
         <td>
-          {{user.createdAt | date: 'medium'}}
+          {{emp.createdAt | date: 'medium'}}
         </td>
         <td>
-          {{user.updatedAt | date: 'medium'}}
+          {{emp.updatedAt | date: 'medium'}}
         </td>
         <td>
-          <button class="btn btn-danger btn-sm" (click)="deleteUser(user.id)">
+          <button class="btn btn-danger btn-sm" (click)="deleteEmployee(emp.id)">
             <span>Delete</span>
           </button>
-          <button class="btn btn-primary btn-sm" (click)="open(content, user)">
+          <button class="btn btn-primary btn-sm" (click)="open(content, emp)">
             <span>Edit</span>
           </button>
         </td>
