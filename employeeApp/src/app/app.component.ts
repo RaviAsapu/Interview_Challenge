@@ -9,7 +9,7 @@ import { Employee } from './employee.model';
 })
 export class AppComponent implements OnInit {
 
-  title = 'employeeApp';
+  title = 'employeeapp';
   employees: Array<Employee>;
   employee: Employee = new Employee();
 
