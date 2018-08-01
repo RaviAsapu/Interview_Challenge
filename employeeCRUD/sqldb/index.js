@@ -5,9 +5,9 @@ var Sequelize = require('sequelize');
 
 var db = {
   Sequelize: Sequelize,
-  sequelize: new Sequelize('nodejs', 'root', 'root', {
+  sequelize: new Sequelize('nodejs', 'root', 'mysqlpassword', {
     dialect: 'mysql',
-    host: "localhost",
+    host: "mysqlinstance.cimzkmhrfaxk.us-east-2.rds.amazonaws.com",
     port: 3306,
     operatorsAliases: "false",
   })

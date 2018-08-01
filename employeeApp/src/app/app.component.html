@@ -6,7 +6,7 @@
 </div>
 
 
-div class="container">
+<div class="container">
   <h3>Add new employee : </h3>
   <form name="userForm">
     <div class="form-group row">
@@ -54,9 +54,6 @@ div class="container">
         <th>Emp Id</th>
         <th>Name</th>
         <th>Email</th>
-        <th>Role</th>
-        <th>Created Date</th>
-        <th>Updated Date</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -71,9 +68,6 @@ div class="container">
         </td>
         <td>
           {{emp.email}}
-        </td>
-        <td>
-          {{emp.role}}
         </td>
         <td>
           {{emp.createdAt | date: 'medium'}}
